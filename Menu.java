@@ -1,10 +1,10 @@
 import java.util.Scanner;
-import controllers.gerenciadorUsuario;
+import controllers.GerenciadorUsuarios;
 import models.Usuario;
 
 
 public class Menu {
-    private static gerenciadorUsuario gerenciador = new gerenciadorUsuario();
+    private static GerenciadorUsuarios usuario = new GerenciadorUsuarios();
     private static Scanner scanner = new Scanner(System.in);
 
     public  void exibirMenu() {
@@ -32,19 +32,19 @@ public class Menu {
         private static void adicionarUsuario() {
             System.out.print("Digite o nome do usuário: ");
             String nome = scanner.next();
-            gerenciador.adicionarUsuario(nome);
+            usuario.adicionarUsuario(nome);
             System.out.println("Usuário adicionado com sucesso!");
         }
         private static void listarUsuarios() {
             System.out.println("Lista de Usuários:");
-            for (Usuario u : gerenciador.listaUsuarios()) {
+            for (Usuario u : usuario.listarUsuarios()) {
                 System.out.println("- " + u.getName());
             }
         }
         private static void removerUsuario() {
             System.out.print("Digite o nome do usuário a ser removido: ");
             String nome = scanner.next();
-            if (gerenciador.removeUsuario(nome)) {
+            if (usuario.removerUsuario(nome)) {
                 System.out.println("Usuário removido com sucesso!");
             } else {
                 System.out.println("Usuário não encontrado.");
