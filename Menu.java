@@ -75,7 +75,7 @@ public class Menu {
             System.out.println(GREENP+ "Usuário adicionado com sucesso!"+ RESETP);
         }
         private static void listarUsuarios() {
-            System.out.println(ROSA+ "Lista de Usuários:" + RESET);
+            System.out.println( "Lista de Usuários:" );
             for (Usuario u : usuario.listarUsuarios()) {
                 System.out.println("- " + u.getName());
             }
@@ -117,7 +117,7 @@ private static void removerTarefa() {
 
     if (usuarioEncontrado != null) {
         // Listar tarefas com índice
-        tarefas.listarTarefasDoUsuario(usuarioEncontrado);
+        tarefas.listartarefas();//retirei os argumentos argumentos 
 
         System.out.print("Digite o número da tarefa que deseja remover: ");
         int indice = scanner.nextInt();
