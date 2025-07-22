@@ -21,8 +21,9 @@ public class Tarefa extends Item{
     public Usuario getEncarregado() {
         return encarregado;
     }
+
     @Override
     public void mostrarDetalhes(){
-        System.out.println("Tarefa:"+ getTitulo() + "Status" + status + "Descrição" + getDescricao() + "Encarregado" + encarregado.getName()) ;
+        System.out.println("Tarefa: "+ getTitulo() + " | Status: " + status + " | Descrição: " + getDescricao() + " | Encarregado: " + encarregado.getName()) ;
     }
 }
