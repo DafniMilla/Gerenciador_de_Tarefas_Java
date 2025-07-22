@@ -1,6 +1,8 @@
 
 import java.util.Scanner;
 import controllers.GerenciadorUsuarios;
+import models.Status;
+import models.Tarefa;
 import models.Usuario;
 import controllers.GerenciadorTarefas;
 
@@ -52,6 +54,7 @@ public class Menu {
             System.out.println(CYAN +"3. Remover Usuário"+ RESET);
             System.out.println(CYAN +"4. Adicionar Tarefa"+ RESET);
             System.out.println(CYAN +"5. Remover Tarefa"+ RESET);
+            System.out.println("6. Listar Tarefas");
             System.out.println(CYAN +"0. Sair"+ RESET);
             System.out.print(CYAN + "Escolha uma opção: "+ RESET);
             opcao = scanner.nextInt();
@@ -60,8 +63,9 @@ public class Menu {
                     case 1 -> adicionarUsuario();
                     case 2 -> listarUsuarios();
                     case 3 -> removerUsuario();
-                    case 4 -> adicionarTarefas(); //adicionar tarefa
-                    case 5 -> removerTarefa();  //remover tarefa
+                    case 4 -> adicionarTarefas(); 
+                    case 5 -> removerTarefa();  
+                    case 6 -> listartarefas();
                     case 0 -> System.out.println("Saindo do menu...");
                     default -> System.out.println(REDP + "Opção inválida. Tente novamente."+ RESET);
                 }
@@ -89,14 +93,14 @@ public class Menu {
                 System.out.println(REDP+ "Usuário não encontrado."+RESETP);
             }
         }
-////// adicionar tarefa
+        ////// adicionar tarefa
         private static void adicionarTarefas(){
             System.out.println("Digite seu nome: ");
             String nome = scanner.next();
-             Usuario usuarioEncontrado = usuario.buscarUsuarioPorNome(nome);
+            Usuario usuarioEncontrado = usuario.buscarUsuarioPorNome(nome);
 
-        if (usuarioEncontrado != null) { ///só adiciona tarefa usuário já cadastrado 
-            scanner.nextLine(); // limpar buffer
+        if (usuarioEncontrado != null) { 
+            scanner.nextLine(); 
             System.out.print("Digite o título da tarefa: ");
             String titulo = scanner.nextLine();
             System.out.print("Digite a descrição da tarefa: ");
@@ -108,32 +112,52 @@ public class Menu {
              System.out.println(REDP + "Usuário não encontrado." + RESETP);
     }
 }
+        ///remover tarefa
+        private static void removerTarefa() {
+            System.out.println("Digite seu nome:");
+            String nome = scanner.next();
+            Usuario usuarioEncontrado = usuario.buscarUsuarioPorNome(nome);
 
-///remover tarefa
-private static void removerTarefa() {
-    System.out.println("Digite seu nome:");
-    String nome = scanner.next();
-    Usuario usuarioEncontrado = usuario.buscarUsuarioPorNome(nome);
+            if (usuarioEncontrado != null) {
+                tarefas.listartarefas();
 
-    if (usuarioEncontrado != null) {
-        // Listar tarefas com índice
-        tarefas.listartarefas();//retirei os argumentos argumentos 
+                System.out.print("Digite o número da tarefa que deseja remover: ");
+                int indice = scanner.nextInt();
 
-        System.out.print("Digite o número da tarefa que deseja remover: ");
-        int indice = scanner.nextInt();
-
-        boolean sucesso = tarefas.removerTarefaPorIndice( indice, usuarioEncontrado);
-        if (sucesso) {
-            System.out.println(GREENP+" Tarefa removida com sucesso!"+RESETP);
-        } else {
-            System.out.println(REDP+" Índice inválido ou tarefa não pertence ao usuário."+RESETP);
+                boolean sucesso = tarefas.removerTarefaPorIndice( indice, usuarioEncontrado);
+                if (sucesso) {
+                    System.out.println(GREENP+" Tarefa removida com sucesso!"+RESETP);
+                } else {
+                    System.out.println(REDP+" Índice inválido ou tarefa não pertence ao usuário."+RESETP);
+                }
+            }else {
+                System.out.println(REDP + "Usuário não encontrado." + RESETP);
+            }
         }
-    }else {
-        System.out.println(REDP + "Usuário não encontrado." + RESETP);
-    }
-}
+        private static void listartarefas(){
+            for(Tarefa t: tarefas.listartarefas()){
+                t.mostrarDetalhes();
+            }
+        }
+        public static void atualizarStatus(){
+            System.out.println("Digite o titulo da tarefa que vai ser atualizada:");
+            var titulo = scanner.next();
+            System.out.println("Digite o novo status da tarefa (Pendente, Em Andamento, Concluída):");
+            var status = scanner.nextInt();
+            var novoStatus = switch (status){
+                case 1 -> Status.PENDENTE;
+                case 2 -> Status.EM_ANDAMENTO;
+                case 3 -> Status.CONCLUIDA;
+                default -> Status.PENDENTE;
+            };
+            if (tarefas.atualizarStatus(titulo,novoStatus )){
+                System.out.println(("Status atualizado."));
+            }else{
+                System.out.println("Tarefa não encontrada.");
+            }
+        }
 
-}
+    }
 
    
     
