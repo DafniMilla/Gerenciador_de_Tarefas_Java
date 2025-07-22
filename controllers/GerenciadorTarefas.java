@@ -2,6 +2,7 @@ package controllers;
 import java.util.ArrayList;
 import models.Tarefa;
 import models.Usuario;
+import models.Status;
 
 
 public class GerenciadorTarefas {
@@ -29,6 +30,15 @@ public boolean removerTarefaPorIndice(int indice, Usuario usuario) {
     return false;
 }
 
-        
+public boolean atualizarStatus( String titulo, Status novoStatus){
+    for( Tarefa t:tarefas){
+        if (t.getTitulo().equalsIgnoreCase(titulo)) {
+            t.setStatus(novoStatus);
+            return true;
+        }
     }
+    return false;
+}
+
+}
 
