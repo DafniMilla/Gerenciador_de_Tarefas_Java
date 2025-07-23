@@ -94,46 +94,45 @@ public class Menu {
             }
         }
         ////// adicionar tarefa
-        private static void adicionarTarefas(){
-            System.out.println("Digite seu nome: ");
-            String nome = scanner.next();
-            Usuario usuarioEncontrado = usuario.buscarUsuarioPorNome(nome);
+        private static void adicionarTarefas() {
+    System.out.print("Digite seu nome: ");
+    String nome = scanner.next();
 
-        if (usuarioEncontrado != null) { 
-            scanner.nextLine(); 
-            System.out.print("Digite o título da tarefa: ");
-            String titulo = scanner.nextLine();
-            System.out.print("Digite a descrição da tarefa: ");
-            String descricao = scanner.nextLine();
-
+    try {
+        Usuario usuarioEncontrado = usuario.buscarUsuarioPorNome(nome);
+        scanner.nextLine(); // consumir \n pendente
+        System.out.print("Digite o título da tarefa: ");
+        String titulo = scanner.nextLine();
+        System.out.print("Digite a descrição da tarefa: ");
+        String descricao = scanner.nextLine();
         tarefas.adicionarTarefa(titulo, descricao, usuarioEncontrado);
-        System.out.println(GREENP+ "Tarefa adicionada com sucesso!"+REDP);
-    }   else {
-             System.out.println(REDP + "Usuário não encontrado." + RESETP);
+        System.out.println(GREENP + "Tarefa adicionada com sucesso!" + RESETP);
+    } catch (exceptions.UsuarioNaoEncontradoException e) {
+        System.out.println(REDP + e.getMessage() + RESETP);
     }
 }
+
         ///remover tarefa
-        private static void removerTarefa() {
-            System.out.println("Digite seu nome:");
-            String nome = scanner.next();
-            Usuario usuarioEncontrado = usuario.buscarUsuarioPorNome(nome);
-
-            if (usuarioEncontrado != null) {
-                tarefas.listartarefas();
-
-                System.out.print("Digite o número da tarefa que deseja remover: ");
-                int indice = scanner.nextInt();
-
-                boolean sucesso = tarefas.removerTarefaPorIndice( indice, usuarioEncontrado);
-                if (sucesso) {
-                    System.out.println(GREENP+" Tarefa removida com sucesso!"+RESETP);
-                } else {
-                    System.out.println(REDP+" Índice inválido ou tarefa não pertence ao usuário."+RESETP);
-                }
-            }else {
-                System.out.println(REDP + "Usuário não encontrado." + RESETP);
-            }
+       private static void removerTarefa() {
+    System.out.println("Digite seu nome:");
+    String nome = scanner.next();
+    try {
+        Usuario usuarioEncontrado = usuario.buscarUsuarioPorNome(nome);
+        tarefas.listartarefas();
+        System.out.print("Digite o número da tarefa que deseja remover: ");
+        int indice = scanner.nextInt();
+        boolean sucesso = tarefas.removerTarefaPorIndice(indice, usuarioEncontrado);
+        if (sucesso) {
+            System.out.println(GREENP + "Tarefa removida com sucesso!" + RESETP);
+        } else {
+            System.out.println(REDP + "Índice inválido ou tarefa não pertence ao usuário." + RESETP);
         }
+    } catch (exceptions.UsuarioNaoEncontradoException e) {
+        System.out.println(REDP + e.getMessage() + RESETP);
+    }
+}
+
+
         private static void listartarefas(){
             for(Tarefa t: tarefas.listartarefas()){
                 t.mostrarDetalhes();
