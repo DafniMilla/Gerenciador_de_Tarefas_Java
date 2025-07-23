@@ -1,6 +1,7 @@
 package controllers;
 import java.util.ArrayList;
 import models.Usuario;
+import exceptions.UsuarioNaoEncontradoException;
 
 
 public class GerenciadorUsuarios {
@@ -18,13 +19,14 @@ public class GerenciadorUsuarios {
       return usuarios.removeIf(u -> u.getName().equals(nome));
    }
 
-   public Usuario buscarUsuarioPorNome(String nome) {
+
+public Usuario buscarUsuarioPorNome(String nome) throws UsuarioNaoEncontradoException {
     for (Usuario u : usuarios) {
         if (u.getName().equalsIgnoreCase(nome)) {
             return u;
         }
     }
-    return null;
+    throw new UsuarioNaoEncontradoException("Usuário '" + nome + "' não encontrado.");
 }
 
 }
