@@ -2,7 +2,9 @@ package controllers;
 import java.util.ArrayList;
 import models.Tarefa;
 import models.Usuario;
+import models.Prioridade;
 import models.Status;
+
 
 
 
@@ -36,6 +38,15 @@ public boolean atualizarStatus( String titulo, Status novoStatus){
         }
     }
     return false;
+}
+public boolean atualizarPrioridadeTarefa(String titulo, Prioridade novaPrioridade) {
+    for (Tarefa t : tarefas) {
+        if (t.getTitulo().equalsIgnoreCase(titulo)) {
+            t.setPrioridade(novaPrioridade);
+            return true;
+        }
+    }
+    return false; 
 }
 
 }
