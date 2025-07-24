@@ -31,5 +31,6 @@ public class Tarefa extends Item{
         + "\n Descrição: " + getDescricao()
         + "\n Encarregado: " + encarregado.getName()
         + "\n Categoria: " + categoria);
+        System.out.println("---------------------------------");
     }
 }
