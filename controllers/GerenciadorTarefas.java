@@ -5,15 +5,13 @@ import models.Usuario;
 import models.Status;
 
 
+
 public class GerenciadorTarefas {
     private ArrayList<Tarefa> tarefas=new ArrayList<>();
 
-    public GerenciadorTarefas(){
-        tarefas = new ArrayList<>();
-    }
 
-    public void adicionarTarefa(String titulo, String descricao, Usuario usuario ){
-        Tarefa novTarefa=new Tarefa(titulo, descricao, usuario);
+    public void adicionarTarefa(String titulo, String descricao, Usuario usuario, String categoria ){
+        Tarefa novTarefa=new Tarefa(titulo, descricao, usuario,categoria);
         tarefas.add(novTarefa);
     }
 ////listar tarefas
