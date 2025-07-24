@@ -26,7 +26,7 @@ public Usuario buscarUsuarioPorNome(String nome) throws UsuarioNaoEncontradoExce
             return u;
         }
     }
-    throw new UsuarioNaoEncontradoException("Usuário '" + nome + "' não encontrado.");
+    throw new UsuarioNaoEncontradoException("Usuário " + nome + " não encontrado.");
 }
 
 }
