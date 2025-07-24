@@ -1,4 +1,5 @@
 
+import java.util.List;
 import java.util.Scanner;
 import controllers.GerenciadorUsuarios;
 import models.Status;
@@ -46,6 +47,7 @@ public class Menu {
             System.out.println(BEGE + "4. Adicionar Tarefa" + RESET);
             System.out.println(BEGE + "5. Remover Tarefa" + RESET);
             System.out.println(BEGE + "6. Listar Tarefas" + RESET);
+            System.out.println(BEGE + "7. Atualizar Status da Tarefa" + RESET);
             System.out.println(BEGE + "0. Sair" + RESET);
             System.out.println(MARROM_CLARO + "══════════════════════════════════════════════" + RESET);
             System.out.print(MARROM_CLARO + "Escolha uma opção: " + RESET);
@@ -55,9 +57,10 @@ public class Menu {
                     case 1 -> adicionarUsuario();
                     case 2 -> listarUsuarios();
                     case 3 -> removerUsuario();
-                    case 4 -> adicionarTarefas(); 
-                    case 5 -> removerTarefa();  
+                    case 4 -> adicionarTarefas();
+                    case 5 -> removerTarefa();
                     case 6 -> listartarefas();
+                    case 7 -> atualizarStatus();
                     case 0 -> System.out.println("Saindo do menu...");
                     default -> System.out.println(REDP + "Opção inválida. Tente novamente."+ RESET);
                 }
@@ -110,7 +113,11 @@ public class Menu {
     String nome = scanner.next();
     try {
         Usuario usuarioEncontrado = usuario.buscarUsuarioPorNome(nome);
-        tarefas.listartarefas();
+           List<Tarefa> lista = tarefas.listartarefas();
+        for (int i = 0; i < lista.size(); i++) {
+            System.out.print(" [ " + i + " ] ");
+            lista.get(i).mostrarDetalhes();
+        }
         System.out.print("Digite o número da tarefa que deseja remover: ");
         int indice = scanner.nextInt();
         boolean sucesso = tarefas.removerTarefaPorIndice(indice, usuarioEncontrado);
@@ -124,16 +131,20 @@ public class Menu {
     }
 }
 
-
         private static void listartarefas(){
             for(Tarefa t: tarefas.listartarefas()){
                 t.mostrarDetalhes();
+            }
+            if (tarefas.listartarefas().isEmpty()) {
+                System.out.println("Nenhuma tarefa encontrada.");
+            } else {
+                System.out.println("Total de tarefas: " + tarefas.listartarefas().size());
             }
         }
         public static void atualizarStatus(){
             System.out.println("Digite o titulo da tarefa que vai ser atualizada:");
             var titulo = scanner.next();
-            System.out.println("Digite o novo status da tarefa (Pendente, Em Andamento, Concluída):");
+            System.out.println("Digite o novo status da tarefa (1 - Pendente, 2 - Em Andamento, 3 - Concluída):");
             var status = scanner.nextInt();
             var novoStatus = switch (status){
                 case 1 -> Status.PENDENTE;
