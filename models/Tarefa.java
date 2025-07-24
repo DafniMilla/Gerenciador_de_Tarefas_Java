@@ -26,6 +26,10 @@ public class Tarefa extends Item{
 
     @Override
     public void mostrarDetalhes(){
-        System.out.println("Tarefa: "+ getTitulo() + " | Status: " + status + " | Descrição: " + getDescricao() + " | Encarregado: " + encarregado.getName() + " | Categoria: " + categoria);
+        System.out.println("Tarefa: " + getTitulo()
+        + "\n Status: " + status
+        + "\n Descrição: " + getDescricao()
+        + "\n Encarregado: " + encarregado.getName()
+        + "\n Categoria: " + categoria);
     }
 }
