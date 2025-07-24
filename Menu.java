@@ -156,9 +156,9 @@ public class Menu {
                 default -> Status.PENDENTE;
             };
             if (tarefas.atualizarStatus(titulo,novoStatus )){
-                System.out.println(("Status atualizado."));
+                System.out.println((GREENP+ "Status atualizado." + RESETP));
             }else{
-                System.out.println("Tarefa não encontrada.");
+                System.out.println(REDP+ "Tarefa não encontrada." + RESETP);
             }
         }
 
