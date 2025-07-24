@@ -5,6 +5,7 @@ import controllers.GerenciadorUsuarios;
 import models.Status;
 import models.Tarefa;
 import models.Usuario;
+import models.Categoria;
 import controllers.GerenciadorTarefas;
 
 
@@ -100,7 +101,9 @@ public class Menu {
         String titulo = scanner.nextLine();
         System.out.print("Digite a descrição da tarefa: ");
         String descricao = scanner.nextLine();
-        tarefas.adicionarTarefa(titulo, descricao, usuarioEncontrado);
+        System.out.print("Digite a categoria da tarefa: ");
+        String categoria = scanner.nextLine();
+        tarefas.adicionarTarefa(titulo, descricao, usuarioEncontrado, categoria);
         System.out.println(GREENP + "Tarefa adicionada com sucesso!" + RESETP);
     } catch (exceptions.UsuarioNaoEncontradoException e) {
         System.out.println(REDP + e.getMessage() + RESETP);
