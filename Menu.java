@@ -11,27 +11,17 @@ public class Menu {
     
     // Códigos ANSI para as cores
     public static final String RESET = "\u001B[0m";
-    public static final String ROSA = "\u001B[35m";
-    public static final String CYAN = "\u001B[36m";
-    public static final String AMARELO = "\u001B[33m";
     public static final String VERDE = "\u001B[32m";
     public static final String VERMELHO = "\u001B[31m";
+    public static final String MARROM_ESCURO = "\u001B[38;5;94m";    // marrom escuro
+    public static final String MARROM_CLARO = "\u001B[38;5;180m";   // marrom claro dourado
+    public static final String BEGE = "\u001B[38;5;223m"; 
 
-      //background
-    String BLACK_BG = "\u001B[40m";
-    String RED_BG = "\u001B[41m";
-    String GREEN_BG = "\u001B[42m";
-    String YELLOW_BG = "\u001B[43m";
-    String BLUE_BG = "\u001B[44m";
-    String PURPLE_BG = "\u001B[45m";
-    String  CYAN_BG = "\u001B[46m";
-    String WHITE_BG = "\u001B[47m";
-
-      //cor da letra pra variaveis static
+    //cor da letra pra variaveis na classe static
     private static final String REDP = "\u001B[31m";
     public static final String RESETP = "\u001B[0m";
     private static final String GREENP = "\u001B[32m";
-    public static final String ROSAP = "\u001B[35m";
+    
 
 
     private static GerenciadorUsuarios usuario = new GerenciadorUsuarios();
@@ -43,20 +33,22 @@ public class Menu {
         int opcao;
 
         do {  
-            System.out.println(ROSA + "╔═══════════════════════════════════╗" + RESET);
-            System.out.println(ROSA + "║      Gerenciador de tarefas       ║" + RESET);
-            System.out.println(ROSA + "╚═══════════════════════════════════╝" + RESET);
+            System.out.println(MARROM_ESCURO + "╔════════════════════════════════════════════╗" + RESET);
+            System.out.println(MARROM_ESCURO + "║            Gerenciador de Tarefas          ║" + RESET);
+            System.out.println(MARROM_ESCURO + "╚════════════════════════════════════════════╝" + RESET);
             System.out.println();
-            System.out.println(CYAN + "               MENU" + RESET);
-            System.out.println(CYAN + "═════════════════════════════════════" + RESET);
-            System.out.println(CYAN +"1. Adicionar Usuário" +RESET);
-            System.out.println(CYAN +"2. Listar Usuários"+ RESET);           
-            System.out.println(CYAN +"3. Remover Usuário"+ RESET);
-            System.out.println(CYAN +"4. Adicionar Tarefa"+ RESET);
-            System.out.println(CYAN +"5. Remover Tarefa"+ RESET);
-            System.out.println("6. Listar Tarefas");
-            System.out.println(CYAN +"0. Sair"+ RESET);
-            System.out.print(CYAN + "Escolha uma opção: "+ RESET);
+
+            System.out.println(MARROM_CLARO + "                    MENU" + RESET);
+            System.out.println(MARROM_CLARO + "══════════════════════════════════════════════" + RESET);
+            System.out.println(BEGE + "1. Adicionar Usuário" + RESET);
+            System.out.println(BEGE + "2. Listar Usuários" + RESET);
+            System.out.println(BEGE + "3. Remover Usuário" + RESET);
+            System.out.println(BEGE + "4. Adicionar Tarefa" + RESET);
+            System.out.println(BEGE + "5. Remover Tarefa" + RESET);
+            System.out.println(BEGE + "6. Listar Tarefas" + RESET);
+            System.out.println(BEGE + "0. Sair" + RESET);
+            System.out.println(MARROM_CLARO + "══════════════════════════════════════════════" + RESET);
+            System.out.print(MARROM_CLARO + "Escolha uma opção: " + RESET);
             opcao = scanner.nextInt();
 
                 switch (opcao){
