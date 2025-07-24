@@ -6,6 +6,7 @@ import models.Status;
 import models.Tarefa;
 import models.Usuario;
 import models.Categoria;
+import models.Prioridade;
 import controllers.GerenciadorTarefas;
 
 
@@ -49,6 +50,7 @@ public class Menu {
             System.out.println(BEGE + "5. Remover Tarefa" + RESET);
             System.out.println(BEGE + "6. Listar Tarefas" + RESET);
             System.out.println(BEGE + "7. Atualizar Status da Tarefa" + RESET);
+            System.out.println(BEGE + "8. Atualizar Prioridade da Tarefa" + RESET);
             System.out.println(BEGE + "0. Sair" + RESET);
             System.out.println(MARROM_CLARO + "══════════════════════════════════════════════" + RESET);
             System.out.print(MARROM_CLARO + "Escolha uma opção: " + RESET);
@@ -62,6 +64,7 @@ public class Menu {
                     case 5 -> removerTarefa();
                     case 6 -> listartarefas();
                     case 7 -> atualizarStatus();
+                    case 8 -> atualizarPrioridadeTarefa();
                     case 0 -> System.out.println("Saindo do menu...");
                     default -> System.out.println(REDP + "Opção inválida. Tente novamente."+ RESET);
                 }
@@ -162,6 +165,23 @@ public class Menu {
             }
         }
 
+        public static void atualizarPrioridadeTarefa() {
+            System.out.println("Digite o título da tarefa que deseja atualizar a prioridade:");
+            String titulo = scanner.next();
+            System.out.println("Digite a nova prioridade da tarefa (1 - Baixa, 2 - Média, 3 - Alta):");
+            int prioridade = scanner.nextInt();
+            var novaPrioridade = switch (prioridade) {
+                case 1 -> Prioridade.BAIXA;
+                case 2 -> Prioridade.MEDIA;
+                case 3 -> Prioridade.ALTA;
+                default -> Prioridade.MEDIA; 
+            };
+            if (tarefas.atualizarPrioridadeTarefa(titulo, novaPrioridade)) {
+                System.out.println(GREENP + "Prioridade atualizada com sucesso!" + RESETP);
+            } else {
+                System.out.println(REDP + "Tarefa não encontrada." + RESETP);
+            }
+        }
     }
 
    
