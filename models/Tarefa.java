@@ -3,11 +3,13 @@ package models;
 public class Tarefa extends Item{
     private String status;
     private Usuario encarregado;
+    private String categoria;
 
-    public Tarefa(String titulo, String descricao, Usuario encarregado){
+    public Tarefa(String titulo, String descricao, Usuario encarregado, String categoria){
         super(titulo,descricao);
         this.status = "Pendente";
         this.encarregado = encarregado;
+        this.categoria = categoria;
     }
 
     public String getStatus(){
@@ -24,6 +26,6 @@ public class Tarefa extends Item{
 
     @Override
     public void mostrarDetalhes(){
-        System.out.println("Tarefa: "+ getTitulo() + " | Status: " + status + " | Descrição: " + getDescricao() + " | Encarregado: " + encarregado.getName()) ;
+        System.out.println("Tarefa: "+ getTitulo() + " | Status: " + status + " | Descrição: " + getDescricao() + " | Encarregado: " + encarregado.getName() + " | Categoria: " + categoria);
     }
 }
