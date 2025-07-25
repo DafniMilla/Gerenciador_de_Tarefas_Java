@@ -6,21 +6,13 @@ Este é um sistema de gerenciamento de tarefas feito em **Java**, com interface 
 
 ## ▶️ Como Executar o Projeto
 
-1. Clone o repositório:
+1. Clone o repositório: `git clone https://github.com/DafniMilla/Projeto-java.git`
 
-git clone https://github.com/DafniMilla/Projeto-java.git
+2. Acesse a pasta: `cd Projeto-java`
 
-2. Acesse a pasta:
+4. Compile os arquivos Java: `javac *.java`
 
-cd Projeto-java
-
-4. Compile os arquivos Java:
-
-javac *.java
-
-5. Execute o programa:
-
-java Menu
+5. Execute o programa: `java Menu`
 
 ---
 
