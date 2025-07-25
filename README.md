@@ -12,7 +12,7 @@ Este é um sistema de gerenciamento de tarefas feito em **Java**, com interface 
 
 4. Compile os arquivos Java: `javac *.java`
 
-5. Execute o programa: `java Menu`
+5. Execute o programa: `java Main`
 
 ---
 
