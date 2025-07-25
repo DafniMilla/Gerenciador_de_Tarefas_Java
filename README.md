@@ -17,7 +17,7 @@ Este é um sistema simples de gerenciamento de tarefas com interface via **termi
 #### 🚀 Passo a passo:
 
 Clone o repositório
-```git clone https://github.com/DafniMilla/Projeto-java.git```
+```git clone https://github.com/DafniMilla/Gerenciador_de_Tarefas_Java```
 
 Acesse a pasta
 ````cd Projeto-java````
